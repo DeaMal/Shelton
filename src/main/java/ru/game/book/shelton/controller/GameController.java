@@ -6,7 +6,9 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import ru.game.book.shelton.LoadChapter;
 import ru.game.book.shelton.Parameters;
 import ru.game.book.shelton.dto.Chapter;
@@ -52,6 +54,10 @@ public class GameController {
     private Label stamina;
     @FXML
     private Label food;
+    @FXML
+    private ImageView startImage;
+    @FXML
+    private Pane pane;
 
     @FXML
     public void initialize() {
@@ -63,10 +69,16 @@ public class GameController {
         links.add(link1);
         links.add(link2);
         links.add(link3);
+        chapterText.setMaxHeight(0);
+        startImage.setFitHeight(400);
+        startImage.setImage(loadChapter.getImageFromFile("/ru/game/book/shelton/shelton.png"));
     }
 
     @FXML
     protected void onStartButtonClick() {
+        startImage.setImage(null);
+        startImage.setFitHeight(0);
+        chapterText.setMaxHeight(-1);
         startButton.setText("Restart");
         parameters.init();
         mastery.setText(parameters.getCurrentMastery() + "/" + parameters.getMastery());
