@@ -5,20 +5,20 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class GameLogger {
     private static final String CHAPTER_LOAD = "Load chapter # {}";
-    private static final String FILE_FOUND = "Found JSON file{}";
-    private static final String READ_FILE_ERROR = "ERROR read JSON file: {}";
+    private static final String FILE_LOAD = "Loading JSON file{}";
+    private static final String TEST_LOGGING = "Test Value is: {}";
     private static final String OTHER_ERROR = "ERROR: {}";
 
     public void loadChapter(String incomingString) {
         log.info(CHAPTER_LOAD, incomingString);
     }
 
-    public void fileFound(String incomingString) {
-        log.info(FILE_FOUND, incomingString);
+    public void loadFile(String incomingString) {
+        log.info(FILE_LOAD, incomingString);
     }
 
-    public void readFileError(String incomingString) {
-        log.info(READ_FILE_ERROR, incomingString);
+    public void testLogging(String incomingString) {
+        log.info(TEST_LOGGING, incomingString);
     }
 
     public void error(String incomingString) {
