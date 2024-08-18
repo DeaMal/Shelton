@@ -2,6 +2,8 @@ package ru.game.book.shelton;
 
 import lombok.Data;
 
+import java.util.Arrays;
+
 @Data
 public class Parameters {
     private Integer mastery;
@@ -16,7 +18,7 @@ public class Parameters {
     public void init() {
         mastery = Utils.rollDice() + 6;
         currentMastery = mastery;
-        stamina = Utils.rollTwoDice() + 12;
+        stamina = Arrays.stream(Utils.rollTwoDice()).sum() + 12;
         currentStamina = stamina;
         luck = Utils.rollDice() + 6;
         currentLuck = luck;

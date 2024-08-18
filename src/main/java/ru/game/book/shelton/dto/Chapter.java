@@ -9,4 +9,5 @@ public class Chapter {
     private String text;
     private List<Link> links;
     private Integer money;
+    private String picture;
 }

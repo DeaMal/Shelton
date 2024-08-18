@@ -13,6 +13,7 @@ public class LoadChapter {
     private static final GameLogger logger = new GameLogger();
     private static final String SUCCESS = " IS SUCCESS";
     private static final String FAIL = " IS FAIL";
+    private static final String RESOURCES_PATH = "/ru/game/book/shelton/";
     private Chapters chapters;
 
     public LoadChapter() {
@@ -22,13 +23,13 @@ public class LoadChapter {
     private void getChaptersFromJSON() {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            String path = "/ru/game/book/shelton/data.json";
-            InputStream jsonFile = getClass().getResourceAsStream(path);
+            String fileName = "data.json";
+            InputStream jsonFile = getClass().getResourceAsStream(RESOURCES_PATH + fileName);
             if (Objects.nonNull(jsonFile)) {
-                logger.loadFile(path + SUCCESS);
+                logger.loadFile(fileName + SUCCESS);
                 chapters = objectMapper.readValue(jsonFile, Chapters.class);
             } else {
-                logger.loadFile(path + FAIL);
+                logger.loadFile(fileName + FAIL);
             }
         } catch (Exception e) {
             logger.error(e.getMessage());
@@ -36,13 +37,13 @@ public class LoadChapter {
         }
     }
 
-    public Image getImageFromFile(String path) {
+    public Image getImageFromFile(String fileName) {
         try {
-            Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream(path)));
-            logger.loadFile(path + SUCCESS);
+            Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/ru/game/book/shelton/" + fileName + ".png")));
+            logger.loadFile(fileName + SUCCESS);
             return image;
         } catch (Exception e) {
-            logger.loadFile(path + FAIL);
+            logger.loadFile(fileName + FAIL);
             return null;
         }
     }

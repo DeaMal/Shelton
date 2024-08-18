@@ -9,7 +9,7 @@ public class Utils {
         return random.nextInt(6) + 1;
     }
 
-    public static int rollTwoDice() {
-        return random.nextInt(12) + 1;
+    public static int[] rollTwoDice() {
+        return new int[]{rollDice(), rollDice()};
     }
 }
